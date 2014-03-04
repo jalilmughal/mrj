@@ -44,7 +44,12 @@ Funktionaliteten for at overfører mellem de forskellige kontoer er ikke færdig
                     <td><b>Amount to transfer:</b></td>
                     <td><input type="text" name="amount"></td>
                     <td><b>Transfer to accountnumber:</b></td>
-                    <td><input type="text" name="targetaccount"></td>
+                    <td><input type="text" name="target"></td>
+                  
+                    
+                    <input type="hidden" name="source" value="${account.number}"><br>
+                      
+                       
                     <td><button type ="submit" name="command" value="save-transfer">Transfer amount</button></td>
                     <td><button type ="submit" name="command" value="list-customer-accounts">Cancel transfer</button></button></td>
 

@@ -34,19 +34,21 @@ public class TransferSaveCommand extends TargetCommand {
     public String execute(HttpServletRequest request) {
         
     BankManager manager = Factory.getInstance().getManager();   
-    String number = request.getParameter("number");
-    AccountIdentifier account = AccountIdentifier.fromString(number);
-
-    request.setAttribute("account", account);
     
+    String amounts = request.getParameter("amount");
+    String sourceAccount = request.getParameter("source");
+    String targetAccount = request.getParameter("target");
     
-    String cpr = request.getParameter("cpr");
-    CustomerIdentifier customer = CustomerIdentifier.fromString(cpr);
-    request.setAttribute("customer", customer);
+    BigDecimal amount = new BigDecimal(amounts.replaceAll(",", ""));
+        AccountIdentifier source = new AccountIdentifier(sourceAccount);
+        AccountIdentifier target = new AccountIdentifier(targetAccount);
     
-    String amount = request.getParameter("amount");
+    request.setAttribute("amount", amount);
+    request.setAttribute("target", target);
+    request.setAttribute("source", source);
+    
         try {
-            AccountDetail transfer = manager.transferAmount(BigDecimal.ZERO, account, account);
+            manager.transferAmount(amount, source, target);
         } catch (NoSuchAccountException ex) {
             Logger.getLogger(TransferSaveCommand.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransferNotAcceptedException ex) {

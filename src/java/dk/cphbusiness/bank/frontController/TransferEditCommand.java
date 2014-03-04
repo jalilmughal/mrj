@@ -33,12 +33,16 @@ public class TransferEditCommand extends TargetCommand {
     @Override
     public String execute(HttpServletRequest request) {
         
-    BankManager manager = Factory.getInstance().getManager();   
+      
     String number = request.getParameter("number");
     AccountIdentifier account = AccountIdentifier.fromString(number);
 
     request.setAttribute("account", account);
-    
+   
+    String cpr = request.getParameter("cpr");
+        CustomerIdentifier customer = CustomerIdentifier.fromString(cpr);
+        request.setAttribute("customer", customer);
+        
         return super.execute(request); //To change body of generated methods, choose Tools | Templates.
     }
     
