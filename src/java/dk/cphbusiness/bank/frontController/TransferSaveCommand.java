@@ -35,13 +35,13 @@ public class TransferSaveCommand extends TargetCommand {
         
     BankManager manager = Factory.getInstance().getManager();   
     
-    String amounts = request.getParameter("amount");
+    String amountsToSend = request.getParameter("amount");
     String sourceAccount = request.getParameter("source");
     String targetAccount = request.getParameter("target");
     
-    BigDecimal amount = new BigDecimal(amounts.replaceAll(",", ""));
-        AccountIdentifier source = new AccountIdentifier(sourceAccount);
-        AccountIdentifier target = new AccountIdentifier(targetAccount);
+    BigDecimal amount = new BigDecimal(amountsToSend.replaceAll(",", ""));
+    AccountIdentifier source = new AccountIdentifier(sourceAccount);
+    AccountIdentifier target = new AccountIdentifier(targetAccount);
     
     request.setAttribute("amount", amount);
     request.setAttribute("target", target);
