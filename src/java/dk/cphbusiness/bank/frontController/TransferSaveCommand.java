@@ -24,9 +24,9 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author RidvanGurel denne del er ikke færdig udviklet endnu !!!
  */
-public class TransferEditCommand extends TargetCommand {
+public class TransferSaveCommand extends TargetCommand {
 
-    public TransferEditCommand(String target) {
+    public TransferSaveCommand(String target) {
         super(target);
     }
 
@@ -39,7 +39,24 @@ public class TransferEditCommand extends TargetCommand {
 
     request.setAttribute("account", account);
     
-        return super.execute(request); //To change body of generated methods, choose Tools | Templates.
+    
+    String cpr = request.getParameter("cpr");
+    CustomerIdentifier customer = CustomerIdentifier.fromString(cpr);
+    request.setAttribute("customer", customer);
+    
+    String amount = request.getParameter("amount");
+        try {
+            AccountDetail transfer = manager.transferAmount(BigDecimal.ZERO, account, account);
+        } catch (NoSuchAccountException ex) {
+            Logger.getLogger(TransferSaveCommand.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransferNotAcceptedException ex) {
+            Logger.getLogger(TransferSaveCommand.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InsufficientFundsException ex) {
+            Logger.getLogger(TransferSaveCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+    
+     return super.execute(request); //To change body of generated methods, choose Tools | Templates.
     }
     
     
