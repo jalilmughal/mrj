@@ -33,11 +33,11 @@ Funktionaliteten for at overfører mellem de forskellige kontoer er ikke færdig
         <img src="photos/mrj.jpg"/><br><h1><b><font size="10" color="orange">The MRJ Bank</font></b></h1>
 
         <h1><b><font size="6" color="black">- Transfer from account <u>${account.number}</u></font></b></h1><br>
-
+        <p>customer: ${customer.cpr}</p>
         <hr/>
 
         <form action="Controller" method="post">
-            <input type="hidden" name="cpr" value="${customer.cpr}"/>
+            
             <table border='1'> 
 
                 <tr>

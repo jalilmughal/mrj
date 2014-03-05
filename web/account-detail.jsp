@@ -36,6 +36,7 @@
 
         <hr/>
         <ul>
+            <li>customer: ${customer.cpr}</li>
             <li>Account number: ${account.number}</li>
             <li>Interest: <fmt:formatNumber value="${account.interest}" maxFractionDigits="3" minFractionDigits="3"/></li>
             <li>Type: ${account.type}</li>
