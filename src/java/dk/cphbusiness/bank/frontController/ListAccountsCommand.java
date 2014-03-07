@@ -6,13 +6,15 @@ import dk.cphbusiness.bank.contract.dto.CustomerIdentifier;
 import dk.cphbusiness.bank.contract.dto.CustomerSummary;
 import dk.cphbusiness.bank.view.Factory;
 import java.util.Collection;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import security.SecurityRole;
 
 public class ListAccountsCommand extends TargetCommand {
 
-    public ListAccountsCommand(String target) {
-        super(target);
+    public ListAccountsCommand(String target, List<SecurityRole> roles) {
+        super(target, roles);
     }
 
     @Override

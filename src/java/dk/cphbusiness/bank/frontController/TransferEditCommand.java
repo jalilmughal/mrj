@@ -8,7 +8,9 @@ package dk.cphbusiness.bank.frontController;
 
 import dk.cphbusiness.bank.contract.dto.AccountIdentifier;
 import dk.cphbusiness.bank.contract.dto.CustomerIdentifier;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import security.SecurityRole;
 
 /**
  *
@@ -16,8 +18,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class TransferEditCommand extends TargetCommand {
 
-    public TransferEditCommand(String target) {
-        super(target);
+    public TransferEditCommand(String target, List<SecurityRole> roles) {
+        super(target, roles);
     }
 
     @Override

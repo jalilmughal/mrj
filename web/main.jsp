@@ -22,7 +22,7 @@
         <ul>
             
             <li> <a href ="Controller?command=list-customers">List customers</a></li>
-            
+            <li> <a href ="Controller?command=create-customer">Create a Customer</a></li>
         </ul>
   </body>
 </html>

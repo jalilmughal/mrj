@@ -1,18 +1,40 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dk.cphbusiness.bank.frontController;
 
-import dk.cphbusiness.bank.frontController.Command;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import security.SecurityRole;
 
-public class TargetCommand implements Command {
-  private final String target;
+/**
+ *
+ * @author hsty
+ */
 
-  public TargetCommand(String target) {
-    this.target = target;
+
+public class TargetCommand implements Command { //gør sådan så man går på den side man vil til
+    private final String target;
+    List<SecurityRole> roles;
+
+    public List<SecurityRole> getRoles() {
+        return roles;
     }
-  
-  @Override
-  public String execute(HttpServletRequest request) {
-    return target;
+
+    
+    
+    public TargetCommand(String target, List <SecurityRole> roles) {
+        this.target = target;
+        this.roles = roles;
     }
-  
-  }
+
+    @Override
+    public String execute(HttpServletRequest request) {
+        return target;
+    }
+    
+    
+    
+}

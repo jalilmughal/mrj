@@ -16,9 +16,11 @@ import dk.cphbusiness.bank.contract.eto.NoSuchAccountException;
 import dk.cphbusiness.bank.contract.eto.TransferNotAcceptedException;
 import dk.cphbusiness.bank.view.Factory;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import security.SecurityRole;
 
 /**
  *
@@ -26,8 +28,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class TransferSaveCommand extends TargetCommand {
 
-    public TransferSaveCommand(String target) {
-        super(target);
+    public TransferSaveCommand(String target, List<SecurityRole> roles) {
+        super(target, roles);
     }
 
     @Override
