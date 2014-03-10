@@ -54,6 +54,7 @@
                         <td>${customer.phone}</td>
                         <td>${customer.email}</td> 
                         <td><button type ="submit" name="command" value="list-customer-accounts">Accounts</button></td>
+                        <td><button type ="submit" name="command" value="change-customer">Edit Customer</button></td>
                     </tr>
 
                 </form>
